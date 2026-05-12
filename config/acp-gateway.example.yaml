@@ -1,0 +1,32 @@
+# Merge relevant sections into ~/.hermes/config.yaml (or use `hermes config set`).
+# Goal: Hermes reads/edits the Career Catalyst workspace via ACP while long-running
+# shell/repo work runs on Cursor Cloud through the Cursor SDK (ts scripts), not by
+# pretending the Cloud VM is Hermes's terminal backend.
+#
+# ACP binds file + terminal tools to the editor workspace directory — keep Hermes
+# launched from the repo root so paths align with Cursor/Catalyst workspace.
+
+# Example: pin gateway-file context to this repo (adjust path).
+# messaging:
+#   cwd: "/Users/tylerstahl/projects/career-catalyst-agent"
+
+# Hermes terminal backends (docker/modal/daytona/etc.) are separate from Cursor Cloud.
+# For this project, prefer:
+# - terminal.backend: local  → fast edits + Distiller CLI against data/*.sqlite
+# - Heavy research → npm/tsx scripts using @cursor/sdk with CAREER_CATALYST_RUNTIME=cloud
+#
+# Example local terminal block:
+# terminal:
+#   backend: local
+#   cwd: "."
+#   timeout: 180
+
+# Optional: mount repo into a sandbox if you use Docker backend for Hermes tools only:
+# terminal:
+#   backend: docker
+#   docker_mount_cwd_to_workspace: true
+#   docker_volumes:
+#     - "/Users/tylerstahl/projects/career-catalyst-agent:/workspace/repo:ro"
+
+# Secrets stay in ~/.hermes/.env (never commit). Typical keys: OPENROUTER_API_KEY,
+# GEMINI_API_KEY, CURSOR_API_KEY (for SDK scripts only—also in project .env when running SDK).

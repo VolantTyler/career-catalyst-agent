@@ -1,0 +1,27 @@
+{
+  "name": "career-catalyst-agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "trajectory:consultancies": "tsx scripts/run-consultancy-trajectory.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VolantTyler/career-catalyst-agent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/VolantTyler/career-catalyst-agent/issues"
+  },
+  "homepage": "https://github.com/VolantTyler/career-catalyst-agent#readme",
+  "devDependencies": {
+    "@types/node": "^25.7.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,0 +1,27 @@
+---
+description: Career Catalyst sovereign stack — Hermes supervises; Cursor SDK is execution-only
+alwaysApply: true
+---
+
+# Architecture (non-negotiable)
+
+## Cognitive hierarchy
+
+1. **Hermes Agent** is the **supervisor / cognitive core**: planning, routing inference (local Gemma vs cloud Gemini), memory orchestration (SQLite FTS5 distilled findings), and **ACP** bridging into editor workspaces.
+2. **OpenClaw** is the **event-driven gateway** for external triggers (Slack, Telegram, Discord). It dispatches work into the supervised stack; it does not replace Hermes reasoning.
+3. **Cursor SDK** is a **remote execution tool** for **sandboxed Cursor Cloud VMs**: durable, long-horizon shell/repo work. It is **not** the architecture’s brain.
+
+## Forbidden pattern
+
+- **Do not** propose or implement an **SDK-only** architecture (where the Cursor SDK alone orchestrates research, memory, and product logic). That is an explicit **anti-pattern** for this repository.
+- SDK runs must be **invoked by** Hermes-orchestrated flows (skills, prompts, or scheduled jobs), with findings **distilled** into SQLite FTS—not left as raw chat logs.
+
+## Memory
+
+- **SQLite FTS5** holds **Distilled Findings** (companies, technologies, signals). Raw transcripts are not the source of truth.
+
+## Integration discipline
+
+- **ACP**: workspace file access follows the Hermes session working directory; heavy execution may fan out to Cursor Cloud via SDK **without** collapsing supervision into the SDK entrypoint.
+
+When adding features, preserve this separation of **reasoning (Hermes)** vs **gateway (OpenClaw)** vs **execution (Cursor SDK)**.
