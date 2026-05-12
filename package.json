@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "trajectory:consultancies": "tsx scripts/run-consultancy-trajectory.ts"
+    "trajectory:consultancies": "tsx scripts/run-consultancy-trajectory.ts",
+    "pdf:text": "tsx scripts/extract-pdf-text.ts",
+    "catalyst:whoami": "tsx legacy/scripts/whoami.ts",
+    "catalyst:prompt": "tsx legacy/scripts/prompt-once.ts",
+    "catalyst:send": "tsx legacy/scripts/send.ts"
   },
   "repository": {
     "type": "git",
@@ -19,8 +23,13 @@
     "url": "https://github.com/VolantTyler/career-catalyst-agent/issues"
   },
   "homepage": "https://github.com/VolantTyler/career-catalyst-agent#readme",
+  "dependencies": {
+    "pdf-parse": "^1.1.1"
+  },
   "devDependencies": {
+    "@cursor/sdk": "^1.0.12",
     "@types/node": "^25.7.0",
+    "dotenv": "^17.4.2",
     "tsx": "^4.21.0",
     "typescript": "^6.0.3"
   }
